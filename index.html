@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Tareas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>Mi lista de tareas</h1>
+
+  <div id="app">
+    <input type="text" v-model="label" />
+    <button v-on:click="agregarTarea">Agregar tarea</button>
+
+    <ol>
+      <li
+        v-for="(tarea, index) in tareas"
+        v-on:click="completarTarea(index)"
+        v-bind:class="{completada: tarea.completada}" >
+        {{ tarea.label }}
+      </li>
+    </ol>
+
+
+    <h2>Tareas completadas!</h2>
+    <ol>
+      <li
+        v-for="(tarea, index) in tareasCompletadas"
+        v-on:click="completarTarea(index)"
+        v-bind:class="{completada: tarea.completada}" >
+        {{ tarea.label }}
+      </li>
+    </ol>
+
+    <h2>Tareas que faltan completar</h2>
+    <ol>
+      <li
+        v-for="(tarea, index) in tareasSinCompletar"
+        v-on:click="completarTarea(index)"
+        v-bind:class="{completada: tarea.completada}" >
+        {{ tarea.label }}
+      </li>
+    </ol>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
